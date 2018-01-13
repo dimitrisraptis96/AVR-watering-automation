@@ -1,44 +1,41 @@
-;***********************************************
-;lab3.asm
 ;*****************************************
-;
 ;
 ;Created: 	08/01/2018 
 ;
 ;
 ;Authors: 	Dimitrios Raptis				      			
-;			      Anastasia Pachni-Tsitiridou	
+;		Anastasia Pachni-Tsitiridou	
 ;
 ;*****************************************
 
 
 ;*****************************************
-;				CONSTANT VALUES
+;		CONSTANT VALUES
 ;*****************************************
 ;
-;		    TEMPERATURE <  10 	==> 	0
-;	10 <= TEMPERATURE <= 20 	==> 	1
-;	20 <  TEMPERATURE <  30 	==> 	2
-;	30 <= TEMPERATURE			    ==> 	3
+;      TEMPERATURE <  10 	==> 	0
+;10 <= TEMPERATURE <= 20 	==> 	1
+;20 <  TEMPERATURE <  30 	==> 	2
+;30 <= TEMPERATURE		==> 	3
 ;
-; 	    HUMIDITY >= 50%		  ==>		0	
-;		    HUMIDITY <  50%		  ==>		1	
+;    	HUMIDITY >= 50%		==>	0	
+;	HUMIDITY <  50%		==>	1	
 ;
-;***********************************************
+;*****************************************
 
 .include "m16def.inc"
 
 ;*****r18-r20 delay
 
-.def TEMPERATURE			=	r16
-.def HUMIDITY				  = r17
-.def WATERINGS				= r21
-.def INTERVAL				  =	r22
-.def DURATION				  =	r23
+.def TEMPERATURE	= r16
+.def HUMIDITY		= r17
+.def WATERINGS		= r21
+.def INTERVAL		= r22
+.def DURATION		= r23
 .def current_session	= r24
-.def current_sec			= r25
-.def buffer					  =	r26
-.def LED					    =	r27
+.def current_sec	= r25
+.def buffer		= r26
+.def LED		= r27
 
 ;===========================================
 ;Macro that takes an 8-bit register as input 
@@ -60,15 +57,15 @@ InitStackPointer:
 	out sph, r16
 
 ;===============================
-; 			      MAIN
+; 	     MAIN
 ;===============================
 
 init_param:
 		;set a random initial value
-		ldi TEMPERATURE, 		0
-		ldi WATERINGS, 			1
-		ldi INTERVAL,			24
-		ldi DURATION,			1
+		ldi TEMPERATURE, 	0
+		ldi WATERINGS, 		1
+		ldi INTERVAL,		24
+		ldi DURATION,		1
 		ldi current_session,	1
 
 main:	
@@ -194,7 +191,7 @@ big_humid:
 
 
 ;***************************
-;		Set duration
+;	Set duration
 ;***************************
 set_duration_1:
 		ldi DURATION, 1
@@ -311,7 +308,7 @@ end_of_watering2:
 		rjmp watering
 
 ;********************************
-;		Intervals delays
+;	Intervals delays
 ;********************************
 break4:
 		rcall delay4
@@ -354,7 +351,7 @@ new_program:
 
 
 ;*****************************************
-;						LED setters
+;	        LED setters
 ;*****************************************
 set_LED0_LED3:
 		;clear bits LED0-LED3 
